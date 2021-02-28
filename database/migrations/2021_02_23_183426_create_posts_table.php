@@ -20,8 +20,10 @@ class CreatePostsTable extends Migration
             $table->longText('content');
             $table->string('slug');
             $table->string('image_cover')->nullable();
-            $table->string('image_thumbnail')->nullable();
+            $table->string('image_thumbnail');
             $table->dateTime('published_at')->nullable();
+            $table->unsignedBigInteger('author_id');
+            $table->foreign('author_id')->references('id')->on('users');
             $table->timestamps();
         });
     }
